@@ -16,14 +16,14 @@ if ( ! defined( 'ABSPATH' ) ) {
  */
 function hs_get_editorial_sections() {
 	return array(
-		'salta'      => __( 'Salta', 'holasalta-child' ),
-		'policiales' => __( 'Policiales', 'holasalta-child' ),
-		'politica'   => __( 'Política', 'holasalta-child' ),
-		'sociedad'   => __( 'Sociedad', 'holasalta-child' ),
-		'deportes'   => __( 'Deportes', 'holasalta-child' ),
-		'nacionales' => __( 'Nacionales', 'holasalta-child' ),
-		'economia'   => __( 'Economía', 'holasalta-child' ),
-		'cultura'    => __( 'Cultura', 'holasalta-child' ),
+		'salta'           => __( 'Salta', 'holasalta-child' ),
+		'policiales'      => __( 'Policiales', 'holasalta-child' ),
+		'nacionales'      => __( 'Nacionales', 'holasalta-child' ),
+		'deportes'        => __( 'Deportes', 'holasalta-child' ),
+		'espectaculos'    => __( 'Espectáculos', 'holasalta-child' ),
+		'internacionales' => __( 'Internacionales', 'holasalta-child' ),
+		'sabias-que'      => __( '¿Sabías que?', 'holasalta-child' ),
+		'columnas'        => __( 'Columnas', 'holasalta-child' ),
 	);
 }
 
@@ -51,22 +51,22 @@ function hs_get_social_links() {
 		'instagram' => array(
 			'label' => 'Instagram',
 			'short' => 'IG',
-			'url'   => '#',
+			'url'   => 'https://www.instagram.com/holasalta/',
 		),
 		'facebook'  => array(
 			'label' => 'Facebook',
 			'short' => 'FB',
-			'url'   => '#',
+			'url'   => 'https://www.facebook.com/HolaSaltaNoticiasYa',
 		),
 		'x'         => array(
 			'label' => 'X',
 			'short' => 'X',
-			'url'   => '#',
+			'url'   => 'https://x.com/HolaSaltaYa',
 		),
 		'whatsapp'  => array(
 			'label' => 'WhatsApp',
 			'short' => 'WA',
-			'url'   => '#',
+			'url'   => 'https://wa.me/5493875230770',
 		),
 	);
 }
@@ -137,11 +137,18 @@ function hs_render_post_card( $args = array() ) {
 function hs_get_ad_sidebar_id( $slot ) {
 	$slots = array(
 		'home-top'      => 'hs-ad-home-top',
+		'home-strip'    => 'hs-ad-home-strip',
 		'home-middle'   => 'hs-ad-home-middle',
+		'home-square-1' => 'hs-ad-home-square-1',
+		'home-square-2' => 'hs-ad-home-square-2',
+		'home-square-3' => 'hs-ad-home-square-3',
 		'home-bottom'   => 'hs-ad-home-bottom',
-		'single-top'    => 'hs-ad-single-top',
-		'single-middle' => 'hs-ad-single-middle',
-		'single-inline' => 'hs-ad-single-inline',
+		'single-top'      => 'hs-ad-single-top',
+		'single-middle'   => 'hs-ad-single-middle',
+		'single-inline'   => 'hs-ad-single-inline',
+		'single-square-1' => 'hs-ad-single-square-1',
+		'single-square-2' => 'hs-ad-single-square-2',
+		'single-square-3' => 'hs-ad-single-square-3',
 		'category-top'  => 'hs-ad-category-top',
 	);
 
@@ -178,12 +185,6 @@ function hs_get_primary_category( $post_id = 0 ) {
 
 	if ( ! $categories ) {
 		return null;
-	}
-
-	foreach ( $categories as $category ) {
-		if ( 'destacadas' !== $category->slug ) {
-			return $category;
-		}
 	}
 
 	return $categories[0];
@@ -223,6 +224,18 @@ function hs_get_posts_page_url() {
 	}
 
 	return home_url( '/' );
+}
+
+/**
+ * Returns estimated reading time in minutes for a post.
+ *
+ * @param int $post_id Post ID. Defaults to current post.
+ * @return int Minutes (minimum 1).
+ */
+function hs_reading_time( $post_id = 0 ) {
+	$content = get_post_field( 'post_content', $post_id ?: get_the_ID() );
+	$words   = str_word_count( wp_strip_all_tags( $content ) );
+	return max( 1, (int) ceil( $words / 200 ) );
 }
 
 /**
