@@ -1,4 +1,4 @@
-<?php
+﻿<?php
 /**
  * One-time site scaffold created when the child theme is activated.
  *
@@ -125,15 +125,83 @@ function hs_run_initial_setup() {
 		return;
 	}
 
+	$qs = '<!-- wp:heading {"level":2} --><h2>Quiénes somos</h2><!-- /wp:heading -->'
+		. '<!-- wp:paragraph --><p>HolaSalta.com es un medio de comunicación digital nacido en Salta, Argentina, con el objetivo de informar a la comunidad salteña de manera clara, rápida y responsable.</p><!-- /wp:paragraph -->'
+		. '<!-- wp:paragraph --><p>Cubrimos las noticias locales, provinciales, nacionales e internacionales que afectan la vida cotidiana de los salteños: seguridad, deportes, espectáculos, política y mucho más.</p><!-- /wp:paragraph -->'
+		. '<!-- wp:heading {"level":2} --><h2>Nuestra misión</h2><!-- /wp:heading -->'
+		. '<!-- wp:paragraph --><p>Creemos en el periodismo como servicio público. Trabajamos para brindar información verificada, contextualizada y accesible para todos los ciudadanos de Salta.</p><!-- /wp:paragraph -->'
+		. '<!-- wp:heading {"level":2} --><h2>Nuestros valores</h2><!-- /wp:heading -->'
+		. '<!-- wp:list --><ul><!-- wp:list-item --><li>Veracidad: publicamos solo lo que podemos verificar.</li><!-- /wp:list-item --><!-- wp:list-item --><li>Independencia: no respondemos a intereses partidarios ni comerciales.</li><!-- /wp:list-item --><!-- wp:list-item --><li>Cercanía: priorizamos las historias que importan a la comunidad salteña.</li><!-- /wp:list-item --><!-- wp:list-item --><li>Responsabilidad: asumimos nuestros errores y los corregimos de forma transparente.</li><!-- /wp:list-item --></ul><!-- /wp:list -->'
+		. '<!-- wp:heading {"level":2} --><h2>Contacto</h2><!-- /wp:heading -->'
+		. '<!-- wp:paragraph --><p>Para comunicarte con nuestra redacción escribinos a <a href="mailto:contacto@holasalta.com">contacto@holasalta.com</a> o envianos un mensaje por <a href="https://wa.me/5493875230770" target="_blank" rel="noopener noreferrer">WhatsApp</a>.</p><!-- /wp:paragraph -->';
+
+	$contacto = '<!-- wp:heading {"level":2} --><h2>Escribinos</h2><!-- /wp:heading -->'
+		. '<!-- wp:paragraph --><p>¿Tenés una noticia para compartir, una consulta editorial o una sugerencia? Nos podés contactar por cualquiera de estos canales.</p><!-- /wp:paragraph -->'
+		. '<!-- wp:heading {"level":3} --><h3>Redacción</h3><!-- /wp:heading -->'
+		. '<!-- wp:paragraph --><p>Correo electrónico: <a href="mailto:contacto@holasalta.com">contacto@holasalta.com</a></p><!-- /wp:paragraph -->'
+		. '<!-- wp:paragraph --><p>WhatsApp: <a href="https://wa.me/5493875230770" target="_blank" rel="noopener noreferrer">+54 9 387 523-0770</a></p><!-- /wp:paragraph -->'
+		. '<!-- wp:heading {"level":3} --><h3>Publicidad</h3><!-- /wp:heading -->'
+		. '<!-- wp:paragraph --><p>Para consultas comerciales escribinos a <a href="mailto:publicidad@holasalta.com">publicidad@holasalta.com</a>.</p><!-- /wp:paragraph -->'
+		. '<!-- wp:heading {"level":3} --><h3>Envianos tu noticia</h3><!-- /wp:heading -->'
+		. '<!-- wp:paragraph --><p>Si tenés información de interés público podés enviarnos fotos, videos o datos a través de nuestro WhatsApp. Nuestro equipo evaluará el contenido y, si corresponde, lo publicará citando la fuente.</p><!-- /wp:paragraph -->';
+
+	$publicidad = '<!-- wp:heading {"level":2} --><h2>Llegá a la audiencia salteña</h2><!-- /wp:heading -->'
+		. '<!-- wp:paragraph --><p>HolaSalta.com es uno de los medios digitales de referencia en Salta. Ofrecemos espacios publicitarios para marcas, comercios, organismos y organizaciones que quieran llegar a nuestra comunidad.</p><!-- /wp:paragraph -->'
+		. '<!-- wp:heading {"level":2} --><h2>Formatos disponibles</h2><!-- /wp:heading -->'
+		. '<!-- wp:list --><ul><!-- wp:list-item --><li>Banner superior (728×90 px)</li><!-- /wp:list-item --><!-- wp:list-item --><li>Banner rectangular (300×250 px)</li><!-- /wp:list-item --><!-- wp:list-item --><li>Franja intermedia (500×160 px)</li><!-- /wp:list-item --><!-- wp:list-item --><li>Cuadrado (450×450 px)</li><!-- /wp:list-item --><!-- wp:list-item --><li>Banner dentro del contenido de la noticia</li><!-- /wp:list-item --><!-- wp:list-item --><li>Contenido patrocinado</li><!-- /wp:list-item --></ul><!-- /wp:list -->'
+		. '<!-- wp:heading {"level":2} --><h2>Ubicaciones</h2><!-- /wp:heading -->'
+		. '<!-- wp:list --><ul><!-- wp:list-item --><li>Portada: arriba, medio y abajo</li><!-- /wp:list-item --><!-- wp:list-item --><li>Notas: sidebar superior, sidebar medio y dentro del artículo</li><!-- /wp:list-item --><!-- wp:list-item --><li>Secciones y categorías: banner superior</li><!-- /wp:list-item --></ul><!-- /wp:list -->'
+		. '<!-- wp:heading {"level":2} --><h2>Consultanos</h2><!-- /wp:heading -->'
+		. '<!-- wp:paragraph --><p>Para conocer tarifas, disponibilidad y formatos personalizados escribinos a <a href="mailto:publicidad@holasalta.com">publicidad@holasalta.com</a> o por <a href="https://wa.me/5493875230770" target="_blank" rel="noopener noreferrer">WhatsApp</a>.</p><!-- /wp:paragraph -->';
+
+	$pol_editorial = '<!-- wp:heading {"level":2} --><h2>Nuestros principios</h2><!-- /wp:heading -->'
+		. '<!-- wp:paragraph --><p>HolaSalta.com se rige por estándares periodísticos de verificación, equidad e independencia. Esta política describe cómo producimos, revisamos y publicamos nuestro contenido.</p><!-- /wp:paragraph -->'
+		. '<!-- wp:heading {"level":2} --><h2>Verificación y fuentes</h2><!-- /wp:heading -->'
+		. '<!-- wp:paragraph --><p>Publicamos únicamente información que fue verificada con al menos una fuente confiable. Cuando la información es preliminar o no confirmada, lo indicamos explícitamente en el texto.</p><!-- /wp:paragraph -->'
+		. '<!-- wp:heading {"level":2} --><h2>Separación entre información y opinión</h2><!-- /wp:heading -->'
+		. '<!-- wp:paragraph --><p>Diferenciamos claramente el contenido informativo del contenido de opinión. Las columnas expresan la perspectiva de sus autores y están etiquetadas como tales.</p><!-- /wp:paragraph -->'
+		. '<!-- wp:heading {"level":2} --><h2>Correcciones</h2><!-- /wp:heading -->'
+		. '<!-- wp:paragraph --><p>Cuando cometemos un error lo corregimos de forma transparente. Las correcciones se publican en el mismo artículo indicando la fecha y el contenido modificado.</p><!-- /wp:paragraph -->'
+		. '<!-- wp:heading {"level":2} --><h2>Publicidad y contenido editorial</h2><!-- /wp:heading -->'
+		. '<!-- wp:paragraph --><p>El contenido publicitario está claramente diferenciado del contenido editorial. Nuestros anunciantes no influyen en las decisiones informativas del medio.</p><!-- /wp:paragraph -->'
+		. '<!-- wp:heading {"level":2} --><h2>Contacto editorial</h2><!-- /wp:heading -->'
+		. '<!-- wp:paragraph --><p>Para consultas, sugerencias o reclamos editoriales escribinos a <a href="mailto:contacto@holasalta.com">contacto@holasalta.com</a>.</p><!-- /wp:paragraph -->';
+
+	$privacidad = '<!-- wp:heading {"level":2} --><h2>Datos que recopilamos</h2><!-- /wp:heading -->'
+		. '<!-- wp:paragraph --><p>HolaSalta.com puede recopilar los siguientes tipos de datos:</p><!-- /wp:paragraph -->'
+		. '<!-- wp:list --><ul><!-- wp:list-item --><li>Datos técnicos de navegación: dirección IP, tipo de navegador, páginas visitadas y tiempo de permanencia.</li><!-- /wp:list-item --><!-- wp:list-item --><li>Datos que el usuario proporciona voluntariamente al enviar comentarios o formularios de contacto.</li><!-- /wp:list-item --><!-- wp:list-item --><li>Cookies propias para el funcionamiento del sitio y cookies de terceros para publicidad y analítica.</li><!-- /wp:list-item --></ul><!-- /wp:list -->'
+		. '<!-- wp:heading {"level":2} --><h2>Uso de los datos</h2><!-- /wp:heading -->'
+		. '<!-- wp:paragraph --><p>Los datos recopilados se utilizan exclusivamente para mejorar la experiencia de uso del sitio, responder consultas, mostrar publicidad a través de plataformas de terceros y generar estadísticas de audiencia de forma agregada y anónima.</p><!-- /wp:paragraph -->'
+		. '<!-- wp:heading {"level":2} --><h2>Cookies</h2><!-- /wp:heading -->'
+		. '<!-- wp:paragraph --><p>Este sitio utiliza cookies propias y de terceros. Podés configurar tu navegador para rechazarlas, aunque esto puede afectar el funcionamiento de algunas secciones del sitio.</p><!-- /wp:paragraph -->'
+		. '<!-- wp:heading {"level":2} --><h2>Derechos del usuario</h2><!-- /wp:heading -->'
+		. '<!-- wp:paragraph --><p>De acuerdo con la Ley 25.326 de Protección de Datos Personales de la República Argentina, los usuarios tienen derecho a acceder, rectificar y suprimir sus datos personales. Para ejercer estos derechos escribinos a <a href="mailto:contacto@holasalta.com">contacto@holasalta.com</a>.</p><!-- /wp:paragraph -->'
+		. '<!-- wp:heading {"level":2} --><h2>Servicios de terceros</h2><!-- /wp:heading -->'
+		. '<!-- wp:paragraph --><p>Este sitio puede integrar servicios de terceros como Google Analytics y plataformas publicitarias. El uso de datos por parte de estos servicios se rige por sus propias políticas de privacidad.</p><!-- /wp:paragraph -->';
+
+	$terminos = '<!-- wp:heading {"level":2} --><h2>Uso del sitio</h2><!-- /wp:heading -->'
+		. '<!-- wp:paragraph --><p>El acceso y uso de HolaSalta.com implica la aceptación de estos términos. Si no estás de acuerdo con alguno de ellos, te pedimos que no utilices el sitio.</p><!-- /wp:paragraph -->'
+		. '<!-- wp:heading {"level":2} --><h2>Propiedad intelectual</h2><!-- /wp:heading -->'
+		. '<!-- wp:paragraph --><p>Todo el contenido publicado en HolaSalta.com —textos, fotografías, videos, gráficos y diseño— es propiedad de HolaSalta.com o de sus respectivos autores, y está protegido por las leyes de propiedad intelectual de la República Argentina.</p><!-- /wp:paragraph -->'
+		. '<!-- wp:paragraph --><p>Está prohibida la reproducción total o parcial del contenido sin autorización expresa del medio. La cita de fragmentos con fines informativos está permitida siempre que se indique la fuente con enlace al artículo original.</p><!-- /wp:paragraph -->'
+		. '<!-- wp:heading {"level":2} --><h2>Comentarios</h2><!-- /wp:heading -->'
+		. '<!-- wp:paragraph --><p>Los comentarios publicados por los usuarios son responsabilidad de quienes los emiten. HolaSalta.com se reserva el derecho de moderar, editar o eliminar comentarios que contengan insultos, discriminación, información falsa o cualquier contenido que viole la ley argentina.</p><!-- /wp:paragraph -->'
+		. '<!-- wp:heading {"level":2} --><h2>Contenido de terceros</h2><!-- /wp:heading -->'
+		. '<!-- wp:paragraph --><p>Este sitio puede incluir enlaces a sitios externos. HolaSalta.com no es responsable por el contenido, la disponibilidad ni las prácticas de privacidad de esos sitios.</p><!-- /wp:paragraph -->'
+		. '<!-- wp:heading {"level":2} --><h2>Limitación de responsabilidad</h2><!-- /wp:heading -->'
+		. '<!-- wp:paragraph --><p>HolaSalta.com no garantiza la disponibilidad continua del sitio ni se hace responsable por daños derivados de su uso o de la imposibilidad de acceder a él.</p><!-- /wp:paragraph -->'
+		. '<!-- wp:heading {"level":2} --><h2>Ley aplicable</h2><!-- /wp:heading -->'
+		. '<!-- wp:paragraph --><p>Estos términos se rigen por las leyes de la República Argentina. Cualquier disputa será resuelta ante los tribunales competentes de la ciudad de Salta.</p><!-- /wp:paragraph -->';
+
 	$page_content = array(
-		'inicio'                => '',
-		'ultimas-noticias'      => '',
-		'quienes-somos'         => '<!-- wp:heading --><h2>Quiénes somos</h2><!-- /wp:heading --><!-- wp:paragraph --><p>HolaSalta.com es un medio digital local enfocado en informar con claridad, cercanía y responsabilidad sobre los temas que importan en Salta.</p><!-- /wp:paragraph --><!-- wp:paragraph --><p>Este contenido es editable. Sumá aquí la historia del medio, su equipo y sus canales de contacto.</p><!-- /wp:paragraph -->',
-		'contacto'              => '<!-- wp:heading --><h2>Contacto</h2><!-- /wp:heading --><!-- wp:paragraph --><p>Para consultas generales, comunicados de prensa o sugerencias editoriales, escribinos a contacto@holasalta.com.</p><!-- /wp:paragraph --><!-- wp:paragraph --><p>Reemplazá este correo y agregá aquí tus canales oficiales antes de publicar el sitio.</p><!-- /wp:paragraph -->',
-		'publicidad'            => '<!-- wp:heading --><h2>Publicidad</h2><!-- /wp:heading --><!-- wp:paragraph --><p>HolaSalta.com ofrece espacios publicitarios para marcas, comercios y organizaciones que quieran llegar a una audiencia local.</p><!-- /wp:paragraph --><!-- wp:paragraph --><p>Consultanos por formatos, ubicaciones y disponibilidad. Reemplazá este texto con tus datos comerciales.</p><!-- /wp:paragraph -->',
-		'politica-editorial'    => '<!-- wp:heading --><h2>Política editorial</h2><!-- /wp:heading --><!-- wp:paragraph --><p>Trabajamos para publicar información clara, verificable y de interés público. Diferenciamos el contenido editorial de los espacios publicitarios.</p><!-- /wp:paragraph --><!-- wp:paragraph --><p>Este texto es una base editable. Completalo con los criterios y procesos definitivos del medio.</p><!-- /wp:paragraph -->',
-		'politica-privacidad'   => '<!-- wp:heading --><h2>Política de privacidad</h2><!-- /wp:heading --><!-- wp:paragraph --><p>Este sitio puede recopilar datos técnicos básicos y la información que las personas envíen voluntariamente mediante formularios o comentarios.</p><!-- /wp:paragraph --><!-- wp:paragraph --><p>Este contenido es orientativo y debe revisarse antes de publicar según las herramientas efectivamente utilizadas en el sitio.</p><!-- /wp:paragraph -->',
-		'terminos-condiciones'  => '<!-- wp:heading --><h2>Términos y condiciones</h2><!-- /wp:heading --><!-- wp:paragraph --><p>El contenido de HolaSalta.com se publica con fines informativos. Las condiciones definitivas de uso deben adecuarse a la operación real del medio.</p><!-- /wp:paragraph --><!-- wp:paragraph --><p>Revisá y completá este texto antes de publicar el sitio.</p><!-- /wp:paragraph -->',
+		'inicio'               => '',
+		'ultimas-noticias'     => '',
+		'quienes-somos'        => $qs,
+		'contacto'             => $contacto,
+		'publicidad'           => $publicidad,
+		'politica-editorial'   => $pol_editorial,
+		'politica-privacidad'  => $privacidad,
+		'terminos-condiciones' => $terminos,
 	);
 
 	$pages = array(
@@ -148,15 +216,14 @@ function hs_run_initial_setup() {
 	);
 
 	$categories = array(
-		'destacadas' => hs_setup_category( 'Destacadas', 'destacadas' ),
-		'salta'      => hs_setup_category( 'Salta', 'salta' ),
-		'policiales' => hs_setup_category( 'Policiales', 'policiales' ),
-		'politica'   => hs_setup_category( 'Política', 'politica' ),
-		'sociedad'   => hs_setup_category( 'Sociedad', 'sociedad' ),
-		'deportes'   => hs_setup_category( 'Deportes', 'deportes' ),
-		'nacionales' => hs_setup_category( 'Nacionales', 'nacionales' ),
-		'economia'   => hs_setup_category( 'Economía', 'economia' ),
-		'cultura'    => hs_setup_category( 'Cultura', 'cultura' ),
+		'salta'           => hs_setup_category( 'Salta', 'salta' ),
+		'policiales'      => hs_setup_category( 'Policiales', 'policiales' ),
+		'nacionales'      => hs_setup_category( 'Nacionales', 'nacionales' ),
+		'deportes'        => hs_setup_category( 'Deportes', 'deportes' ),
+		'espectaculos'    => hs_setup_category( 'Espectáculos', 'espectaculos' ),
+		'internacionales' => hs_setup_category( 'Internacionales', 'internacionales' ),
+		'sabias-que'      => hs_setup_category( '¿Sabías que?', 'sabias-que' ),
+		'columnas'        => hs_setup_category( 'Columnas', 'columnas' ),
 	);
 
 	$primary_menu = hs_setup_menu( 'HolaSalta Principal' );
@@ -165,12 +232,12 @@ function hs_run_initial_setup() {
 	hs_setup_menu_item( $primary_menu, 'Inicio', 'page', $pages['inicio'] );
 	hs_setup_menu_item( $primary_menu, 'Salta', 'category', $categories['salta'] );
 	hs_setup_menu_item( $primary_menu, 'Policiales', 'category', $categories['policiales'] );
-	hs_setup_menu_item( $primary_menu, 'Política', 'category', $categories['politica'] );
-	hs_setup_menu_item( $primary_menu, 'Sociedad', 'category', $categories['sociedad'] );
-	hs_setup_menu_item( $primary_menu, 'Deportes', 'category', $categories['deportes'] );
 	hs_setup_menu_item( $primary_menu, 'Nacionales', 'category', $categories['nacionales'] );
-	hs_setup_menu_item( $primary_menu, 'Economía', 'category', $categories['economia'] );
-	hs_setup_menu_item( $primary_menu, 'Cultura', 'category', $categories['cultura'] );
+	hs_setup_menu_item( $primary_menu, 'Deportes', 'category', $categories['deportes'] );
+	hs_setup_menu_item( $primary_menu, 'Espectáculos', 'category', $categories['espectaculos'] );
+	hs_setup_menu_item( $primary_menu, 'Internacionales', 'category', $categories['internacionales'] );
+	hs_setup_menu_item( $primary_menu, '¿Sabías que?', 'category', $categories['sabias-que'] );
+	hs_setup_menu_item( $primary_menu, 'Columnas', 'category', $categories['columnas'] );
 
 	hs_setup_menu_item( $footer_menu, 'Quiénes somos', 'page', $pages['quienes-somos'] );
 	hs_setup_menu_item( $footer_menu, 'Contacto', 'page', $pages['contacto'] );

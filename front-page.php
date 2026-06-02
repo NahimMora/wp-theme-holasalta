@@ -7,23 +7,15 @@
 
 get_header();
 
-$featured_query = hs_get_posts_by_category( 'destacadas', 4 );
-
-if ( ! $featured_query->have_posts() ) {
-	$featured_query = hs_get_posts_by_category( '', 4 );
-}
+$featured_query = hs_get_posts_by_category( '', 4 );
 
 $featured_posts = $featured_query->posts;
-$breaking_news  = hs_get_posts_by_category( '', 3 );
+$breaking_news  = hs_get_posts_by_category( '', 10 );
 ?>
 
 <div class="hs-home">
 	<div class="hs-container">
-		<section class="hs-hero" aria-labelledby="hs-featured-title">
-			<header class="hs-section-header hs-section-header--hero">
-				<h1 id="hs-featured-title"><?php esc_html_e( 'Noticias destacadas', 'holasalta-child' ); ?></h1>
-			</header>
-
+		<section class="hs-hero" aria-label="<?php esc_attr_e( 'Noticias principales', 'holasalta-child' ); ?>">
 			<?php if ( $featured_posts ) : ?>
 				<div class="hs-hero-grid">
 					<div class="hs-hero-main">
@@ -65,20 +57,27 @@ $breaking_news  = hs_get_posts_by_category( '', 3 );
 
 		<?php if ( $breaking_news->have_posts() ) : ?>
 			<section class="hs-breaking" aria-label="<?php esc_attr_e( 'Último momento', 'holasalta-child' ); ?>">
-				<strong><?php esc_html_e( 'Último momento', 'holasalta-child' ); ?></strong>
-				<ul>
-					<?php
-					while ( $breaking_news->have_posts() ) :
-						$breaking_news->the_post();
-						?>
-						<li><a href="<?php the_permalink(); ?>"><?php the_title(); ?></a></li>
-					<?php endwhile; ?>
-				</ul>
+				<strong aria-hidden="true"><?php esc_html_e( 'Último momento', 'holasalta-child' ); ?></strong>
+				<div class="hs-ticker-viewport">
+					<ul class="hs-ticker-track" role="list">
+						<?php
+						while ( $breaking_news->have_posts() ) :
+							$breaking_news->the_post();
+							?>
+							<li class="hs-ticker-item">
+								<a href="<?php the_permalink(); ?>"><?php the_title(); ?></a>
+							</li>
+						<?php endwhile; ?>
+					</ul>
+				</div>
 			</section>
 		<?php endif; ?>
 		<?php wp_reset_postdata(); ?>
 
-		<?php hs_render_ad_slot( 'home-top', '728x90' ); ?>
+		<div class="hs-ad-top-row">
+			<?php hs_render_ad_slot( 'home-top', '160' ); ?>
+			<?php hs_render_ad_slot( 'home-strip', '500x160' ); ?>
+		</div>
 
 		<?php
 		get_template_part(
@@ -106,7 +105,15 @@ $breaking_news  = hs_get_posts_by_category( '', 3 );
 		}
 
 		hs_render_ad_slot( 'home-middle', '728x90' );
+		?>
 
+		<div class="hs-ad-squares-row" aria-label="<?php esc_attr_e( 'Publicidad', 'holasalta-child' ); ?>">
+			<?php hs_render_ad_slot( 'home-square-1', '450x450' ); ?>
+			<?php hs_render_ad_slot( 'home-square-2', '450x450' ); ?>
+			<?php hs_render_ad_slot( 'home-square-3', '450x450' ); ?>
+		</div>
+
+		<?php
 		$last_sections = array_slice( $sections, 4, 4, true );
 
 		foreach ( $last_sections as $slug => $title ) {
