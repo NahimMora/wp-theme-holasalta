@@ -46,10 +46,6 @@ get_header();
 
 							<h1><?php the_title(); ?></h1>
 
-							<?php if ( has_excerpt() ) : ?>
-								<p class="hs-article-lead"><?php echo esc_html( get_the_excerpt() ); ?></p>
-							<?php endif; ?>
-
 							<div class="hs-article-meta">
 								<span>
 									<?php esc_html_e( 'Por', 'holasalta-child' ); ?>

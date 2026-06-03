@@ -954,7 +954,7 @@ a {
 }
 
 .hs-ticker-track {
-	animation: hs-ticker 38s linear infinite;
+	animation: hs-ticker 60s linear infinite;
 	display: flex;
 	gap: 0;
 	list-style: none;

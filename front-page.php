@@ -90,7 +90,8 @@ $breaking_news  = hs_get_posts_by_category( '', 10 );
 			)
 		);
 
-		$sections       = hs_get_editorial_sections();
+		$sections = hs_get_editorial_sections();
+		unset( $sections['columnas'] );
 		$first_sections = array_slice( $sections, 0, 4, true );
 
 		foreach ( $first_sections as $slug => $title ) {
