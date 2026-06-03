@@ -302,6 +302,7 @@ function hs_ensure_site_config() {
 			'espectaculos'    => 'Espectáculos, entretenimiento y cultura popular: cine, música, televisión y farándula.',
 			'internacionales' => 'El mundo desde Salta: noticias internacionales que importan a nuestra comunidad.',
 			'sabias-que'      => 'Curiosidades, datos sorprendentes y contenido de interés general para los salteños.',
+			'columnas'        => 'Opinión y análisis de columnistas y periodistas de HolaSalta.',
 		);
 		foreach ( $descriptions as $slug => $desc ) {
 			$term = get_term_by( 'slug', $slug, 'category' );

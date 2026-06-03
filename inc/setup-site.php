@@ -223,6 +223,7 @@ function hs_run_initial_setup() {
 		'espectaculos'    => hs_setup_category( 'Espectáculos', 'espectaculos' ),
 		'internacionales' => hs_setup_category( 'Internacionales', 'internacionales' ),
 		'sabias-que'      => hs_setup_category( '¿Sabías que?', 'sabias-que' ),
+		'columnas'        => hs_setup_category( 'Columnas', 'columnas' ),
 	);
 
 	$primary_menu = hs_setup_menu( 'HolaSalta Principal' );
@@ -236,6 +237,7 @@ function hs_run_initial_setup() {
 	hs_setup_menu_item( $primary_menu, 'Espectáculos', 'category', $categories['espectaculos'] );
 	hs_setup_menu_item( $primary_menu, 'Internacionales', 'category', $categories['internacionales'] );
 	hs_setup_menu_item( $primary_menu, '¿Sabías que?', 'category', $categories['sabias-que'] );
+	hs_setup_menu_item( $primary_menu, 'Columnas', 'category', $categories['columnas'] );
 
 	hs_setup_menu_item( $footer_menu, 'Quiénes somos', 'page', $pages['quienes-somos'] );
 	hs_setup_menu_item( $footer_menu, 'Contacto', 'page', $pages['contacto'] );
