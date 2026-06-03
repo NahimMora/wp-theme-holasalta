@@ -42,8 +42,9 @@ if ( 'hero-main' === $variant ) :
 				the_post_thumbnail(
 					$image_size,
 					array(
-						'loading'  => $loading,
-						'decoding' => 'async',
+						'loading'        => $loading,
+						'decoding'       => 'async',
+						'fetchpriority'  => 'eager' === $loading ? 'high' : 'auto',
 					)
 				);
 				?>

@@ -86,27 +86,6 @@ function hs_enqueue_assets() {
 }
 add_action( 'wp_enqueue_scripts', 'hs_enqueue_assets', 20 );
 
-/**
- * Emits preconnect hints for Google Fonts before any other head content.
- */
-function hs_fonts_preconnect() {
-	echo '<link rel="preconnect" href="https://fonts.googleapis.com">' . "\n";
-	echo '<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>' . "\n";
-}
-add_action( 'wp_head', 'hs_fonts_preconnect', 1 );
-
-/**
- * Enqueues editorial web fonts (Playfair Display + Inter).
- */
-function hs_enqueue_fonts() {
-	wp_enqueue_style(
-		'holasalta-fonts',
-		'https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=Inter:wght@400;600;700;800&display=swap',
-		array(),
-		null
-	);
-}
-add_action( 'wp_enqueue_scripts', 'hs_enqueue_fonts', 5 );
 
 /**
  * Registers editorial and advertising widget areas.
@@ -334,3 +313,43 @@ function hs_ensure_site_config() {
 		update_option( 'hs_added_cat_descriptions', 1 );
 	}
 }
+
+/**
+ * One-time cleanup: elimina todas las categorías vacías que no sean
+ * editoriales ni "Uncategorized". Corre una sola vez y se desactiva solo.
+ */
+function hs_cleanup_spurious_categories() {
+	if ( get_option( 'hs_cleaned_categories' ) ) {
+		return;
+	}
+
+	$keep = array_merge(
+		array( 'uncategorized' ),
+		array_keys( hs_get_editorial_sections() )
+	);
+
+	$terms = get_terms(
+		array(
+			'taxonomy'   => 'category',
+			'hide_empty' => false,
+			'fields'     => 'all',
+			'number'     => 0,
+		)
+	);
+
+	if ( is_wp_error( $terms ) ) {
+		return;
+	}
+
+	foreach ( $terms as $term ) {
+		if ( in_array( $term->slug, $keep, true ) ) {
+			continue;
+		}
+		if ( (int) $term->count === 0 ) {
+			wp_delete_term( $term->term_id, 'category' );
+		}
+	}
+
+	update_option( 'hs_cleaned_categories', 1 );
+}
+add_action( 'init', 'hs_cleanup_spurious_categories', 30 );
