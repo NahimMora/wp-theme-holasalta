@@ -23,7 +23,6 @@ function hs_get_editorial_sections() {
 		'espectaculos'    => __( 'Espectáculos', 'holasalta-child' ),
 		'internacionales' => __( 'Internacionales', 'holasalta-child' ),
 		'sabias-que'      => __( '¿Sabías que?', 'holasalta-child' ),
-		'columnas'        => __( 'Columnas', 'holasalta-child' ),
 	);
 }
 

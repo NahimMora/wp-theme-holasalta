@@ -302,7 +302,6 @@ function hs_ensure_site_config() {
 			'espectaculos'    => 'Espectáculos, entretenimiento y cultura popular: cine, música, televisión y farándula.',
 			'internacionales' => 'El mundo desde Salta: noticias internacionales que importan a nuestra comunidad.',
 			'sabias-que'      => 'Curiosidades, datos sorprendentes y contenido de interés general para los salteños.',
-			'columnas'        => 'Opinión y análisis de columnistas y periodistas de HolaSalta.',
 		);
 		foreach ( $descriptions as $slug => $desc ) {
 			$term = get_term_by( 'slug', $slug, 'category' );
@@ -311,6 +310,16 @@ function hs_ensure_site_config() {
 			}
 		}
 		update_option( 'hs_added_cat_descriptions', 1 );
+	}
+
+	// ── 6. Crear categorías editoriales faltantes ────────────────────────────
+	if ( ! get_option( 'hs_ensured_editorial_cats' ) ) {
+		foreach ( hs_get_editorial_sections() as $slug => $label ) {
+			if ( ! get_term_by( 'slug', $slug, 'category' ) ) {
+				wp_insert_term( $label, 'category', array( 'slug' => $slug ) );
+			}
+		}
+		update_option( 'hs_ensured_editorial_cats', 1 );
 	}
 }
 
